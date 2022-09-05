@@ -22,12 +22,14 @@ public class Pokemon {
         this.url = url;
     }
 
-    public int getNumber() {
+    //public Int getNumber() {
+    public String getNumber() {
         //la api no devuelve el numero por lo que tenemos que extraerlo del aurl
         // dividimos la url
         String[]urlPartes=url.split("/");
         //accedemos a la última posición que es el número
-        return Integer.parseInt(urlPartes[urlPartes.length -1]);
+        //return Integer.parseInt(urlPartes[urlPartes.length -1]);
+        return urlPartes[urlPartes.length -1];
     }
 
     public void setNumber(int number) {

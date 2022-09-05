@@ -50,6 +50,7 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
 
     }
 
+
     @Override
     public int getItemCount() {
         return dataset.size();
