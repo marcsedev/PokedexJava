@@ -1,11 +1,11 @@
 package com.example.pokedexjava;
 
+import android.os.Bundle;
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.util.Log;
 
 import com.example.pokedexjava.models.Pokemon;
 import com.example.pokedexjava.models.PokemonRespuesta;
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         retrofit= new Retrofit.Builder() //crear instancia
                 .baseUrl("https://pokeapi.co/api/v2/") //url base donde se obtienen os datos
+                //https://rickandmortyapi.com/api/
                 .addConverterFactory(GsonConverterFactory.create()) // devuelve la info en objetos
                 .build();
         offset = 0;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     private void obtenerDatos(int offset) {
         //usamos la interfaz
         PokeapiService service = retrofit.create(PokeapiService.class);
-        int gen1=151;
+        int gen1=300;
         Call<PokemonRespuesta> pokemonRespuestaCall= service.obtenerListaPokemon(gen1,offset);
 
         pokemonRespuestaCall.enqueue(new Callback<PokemonRespuesta>() {

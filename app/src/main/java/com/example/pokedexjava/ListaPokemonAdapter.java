@@ -10,12 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.pokedexjava.models.Pokemon;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -39,9 +35,11 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         Pokemon p = dataset.get(position);
         holder.nombreTextView.setText(p.getName());
+        holder.numberTextView.setText(p.getNumber()+". ");
 
         Glide.with(context)
                 .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" +p.getNumber()+".png")// + p.getNumber() + ".png")
+                //.load("https://rickandmortyapi.com/api/character/avatar/" +p.getNumber()+".jpeg")// + p.getNumber() + ".png")
                /* .centerCrop()
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)*/
@@ -61,16 +59,21 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
         notifyDataSetChanged();
     }
 
+/*    public void notifyDataSetChanged() {
+    }*/
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private final ImageView fotoImageView;
         private TextView nombreTextView;
+        private TextView numberTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             fotoImageView=itemView.findViewById(R.id.fotoimageView);
             nombreTextView=itemView.findViewById(R.id.nombreTextView);
+            numberTextView=itemView.findViewById(R.id.numberTextView);
         }
     }
 }
